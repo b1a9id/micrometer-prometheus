@@ -6,8 +6,8 @@ plugins {
 
 group = 'com.b1a9idps'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
-targetCompatibility = '15'
+sourceCompatibility = JavaVersion.VERSION_15
+targetCompatibility = JavaVersion.VERSION_15
 
 configurations {
     compileOnly {
@@ -29,9 +29,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    jvmArgs = ['--enable-preview']
 }
 
 wrapper {
     gradleVersion = "7.0"
     distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.withType(JavaCompile).each {
+    it.options.compilerArgs.add('--enable-preview')
+    it.options.compilerArgs.add('-Xlint:preview')
 }
