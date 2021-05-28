@@ -1,7 +1,7 @@
 version: '3'
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.27.1
     container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus
@@ -15,7 +15,7 @@ services:
     ports:
       - 18080:8080
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:7.5.7
     container_name: grafana
     ports:
       - 3000:3000
